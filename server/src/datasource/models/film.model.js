@@ -39,5 +39,11 @@ module.exports = (sequelize, DataTypes, Model) => {
         updatedAt: false,
     });
 
+    Film.associate = function (models) {
+        Group.belongsToMany(models.actors, {
+            as: 'films',           // <-- alias here
+            through: 'film_actor',
+        });
+    };
     return Film;
 }

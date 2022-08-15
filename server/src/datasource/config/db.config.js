@@ -12,7 +12,7 @@ const connect = () => {
     const sequelize = new Sequelize('dvdrental', 'postgreslocal', 'postgreslocal', {
         host: 'localhost',
         dialect: 'postgres',
-        operatorsAliases: false,
+        operatorsAliases: 0,
         pool: {
             max: 10,
             min: 0,
@@ -25,6 +25,7 @@ const connect = () => {
     db.Sequelize = Sequelize;
     db.sequelize = sequelize;
     db.films = require("../models/film.model")(sequelize, DataTypes, Model);
+    db.actor = require("../models/actor.model")(sequelize, DataTypes, Model);
 
     return db;
 
