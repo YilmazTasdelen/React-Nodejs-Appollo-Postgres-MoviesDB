@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes, Model) => {
         rating: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        actors: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER)
         }
     }, {
         // Other model options go here
