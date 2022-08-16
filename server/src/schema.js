@@ -5,7 +5,7 @@ const typeDefs = gql`
 
     Films:[Film!]!
     
-    topTenFilms:[Film!]!
+    actor(id: ID!):Actor
 
   }
  

@@ -1,7 +1,25 @@
-const filmService = require('./src/datasource/services/film.service');
-const ActorService = require('./src/datasource/services/actor.service');
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./src/schema');
+const resolvers = require('./src/resolvers');
+const MovieAPI = require('./dataSources/movieAPI');
 
+async function startApolloServer(typeDefs, resolvers) {
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        dataSources: () => {
+            return {
+                movieAPI: new MovieAPI(),
+            };
+        },
+    });
 
-//console.log("test", filmService.getFilms());
+    const { url, port } = await server.listen({ port: process.env.PORT || 4000 });
+    console.log(`
+      🚀  Server is running
+      🔉  Listening on port ${port}
+      📭  Query at ${url}
+    `);
+}
 
-console.log("test", ActorService.getActor(1));
+startApolloServer(typeDefs, resolvers);
