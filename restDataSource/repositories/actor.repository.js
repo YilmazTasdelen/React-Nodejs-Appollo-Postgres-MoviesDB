@@ -13,14 +13,21 @@ class ActorRepository {
     }
 
     async getActor(id) {
-        const actor = await this.db.actors.findAll({
-            where: {
-                actor_id: id,
-            },
-            raw: true,
-        });
-        console.log('films:::', actor);
-        return actor;
+        try {
+            const actorList = await this.db.sequelize.query(`select a.actor_id,a.first_name,a.last_name from actor a
+            left join film_actor fa on fa.actor_id = a.actor_id where fa.film_id = ${id}`,
+                {
+                    model: this.db.actors,
+                    raw: true,
+                    mapToModel: true // pass true here if you have any mapped fields
+                });
+            // const films = await this.db.films.findAll();
+            console.log('actors:::', actorList);
+            return actorList;
+        } catch (err) {
+            console.log(err);
+            return [];
+        }
     }
 }
 

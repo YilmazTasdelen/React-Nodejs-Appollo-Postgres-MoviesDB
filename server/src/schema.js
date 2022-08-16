@@ -3,7 +3,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   type Query {
 
-    Films:[Film!]!
+    movies:[Film!]!
     
     actor(id: ID!):Actor
 
@@ -15,15 +15,15 @@ const typeDefs = gql`
     title:String
     description:String
     release_year:String
-    actors:[Int]
-    category:Category
+    actors:[Actor]
+    
  }
 
 
  type Actor{
     actor_id:Int
     first_name:String
-    lat_name:String
+    last_name:String
  }
 
  

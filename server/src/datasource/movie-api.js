@@ -4,15 +4,15 @@ class MovieAPI extends RESTDataSource {
     constructor() {
         super();
         // the Catstronauts catalog is hosted on this server
-        this.baseURL = 'localhost:8000/v1/';
+        this.baseURL = 'http://localhost:8001/v1/';
     }
 
     getMovies() {
         return this.get('films');
     }
 
-    getActor(actorId) {
-        return this.get(`actors/${actorId}`);
+    getActor(actor_id) {
+        return this.get(`actors/${actor_id}`);
     }
 }
 

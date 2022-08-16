@@ -12,8 +12,9 @@ const resolvers = {
 
   },
   Film: {
-    Actor: ({ actor_id }, _, { dataSources }) => {
-      return dataSources.movieAPI.getActor(actor_id);
+    actors: ({ film_id }, _, { dataSources }) => {
+      console.log(film_id);
+      return dataSources.movieAPI.getActor(film_id);
     }
   },
 };

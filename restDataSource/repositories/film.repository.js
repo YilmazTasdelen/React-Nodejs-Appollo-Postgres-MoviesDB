@@ -21,7 +21,7 @@ class FilmRepository {
         try {
             const filmList = await this.db.sequelize.query(`SELECT f.title,f.film_id,f.description,release_year,
             ( SELECT ARRAY(SELECT actor_id FROM film_actor WHERE film_id = f.film_id))
-            AS actors FROM film f`,
+            AS actors FROM film f limit 50`,
                 {
                     model: this.db.films,
                     raw: true,

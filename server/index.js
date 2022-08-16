@@ -1,7 +1,7 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./src/schema');
 const resolvers = require('./src/resolvers');
-const MovieAPI = require('./dataSources/movieAPI');
+const MovieAPI = require('./src/datasource/movie-api');
 
 async function startApolloServer(typeDefs, resolvers) {
     const server = new ApolloServer({
