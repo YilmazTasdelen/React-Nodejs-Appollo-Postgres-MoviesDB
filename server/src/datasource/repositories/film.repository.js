@@ -24,12 +24,11 @@ class FilmRepository {
             AS actors FROM film f`,
                 {
                     model: this.db.films,
+                    raw: true,
                     mapToModel: true // pass true here if you have any mapped fields
                 });
-
-
             // const films = await this.db.films.findAll();
-            console.log('films:::', filmList[0]["dataValues"]);
+            console.log('films:::', filmList);
             return filmList;
         } catch (err) {
             console.log(err);
@@ -42,7 +41,6 @@ class FilmRepository {
         const FilmsToActors = await this.db.films.findAll({
             where: {
                 film_id: 1,
-
             },
 
             include: [

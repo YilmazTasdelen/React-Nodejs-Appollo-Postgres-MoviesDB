@@ -25,7 +25,7 @@ const connect = () => {
     db.Sequelize = Sequelize;
     db.sequelize = sequelize;
     db.films = require("../models/film.model")(sequelize, DataTypes, Model);
-    db.actor = require("../models/actor.model")(sequelize, DataTypes, Model);
+    db.actors = require("../models/actor.model")(sequelize, DataTypes, Model);
 
     return db;
 
