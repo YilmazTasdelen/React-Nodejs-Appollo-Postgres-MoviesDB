@@ -3,30 +3,27 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   type Query {
 
-    categories:[Category!]!
-
+    Films:[Film!]!
+    
     topTenFilms:[Film!]!
 
   }
  
 
   type Film{
-
     film_id:Int
     title:String
     description:String
     release_year:String
-    rating:Int
+    actors:[Int]
     category:Category
-    
  }
 
 
- type Category{
-
-    category_id:Int
-    name:String
-
+ type Actor{
+    actor_id:Int
+    first_name:String
+    lat_name:String
  }
 
  
