@@ -1,33 +1,23 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client';
+import HomeCard from '../HomeCard';
+import HomeQueryResult from './HomeQueryResult';
+import useHome from './useHome';
 
-const MOVIES = gql`
-  query Movies {
-  movies {
-    film_id
-    title
-    description
-    release_year
-    actors {
-      actor_id
-      first_name
-      last_name
-    }
-  }
-}
-`;
 
 const Home = () => {
-  const { loading, error, data } = useQuery(MOVIES);
+  const { loading, error, data } = useHome();
   console.log(data);
   return (
     <>
-      test
-      {data?.movies?.map((movie, index) => (
-        <div key={movie.id} >
-          {movie.title}
-        </div>
-      ))}
+      <HomeQueryResult error={error} loading={loading} data={data}>
+        {data?.movies?.map((movie, index) => (
+          // <div key={movie.id} >
+          //   {movie.title}
+          // </div>
+
+          <HomeCard key={movie.id} movie={movie} />
+        ))}
+      </HomeQueryResult>
     </>
   )
 }
