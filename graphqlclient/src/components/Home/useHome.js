@@ -3,11 +3,10 @@ import React from 'react'
 const useHome = () => {
 
 
-
-
-    return (
-        <div>useHome</div>
-    )
+    const { loading, error, data } = useQuery(MOVIES);
+    return {
+        loading, error, data,
+    }
 }
 
 export default useHome
