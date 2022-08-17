@@ -1,26 +1,21 @@
 import React from 'react'
+import { Card, List, Divider } from 'antd';
 
 const HomeCard = ({ movie }) => {
     return (
-        <div className='card'>
-            <div className='container'>
-                <h4><b>{movie.title}</b></h4>
-                <p>{movie.description}</p>
-            </div>
-        </div>
+
+        <List.Item>
+            <Card title={movie.title}>
+                <h4> {movie.description}</h4>
+                <Divider />
+                Actors; <br />
+                {movie.actors?.map(actor => (
+                    <span>{actor.first_name}&nbsp;{actor.last_name}, </span>
+                ))}
+            </Card>
+        </List.Item>
+
     )
 }
 
 export default HomeCard;
-
-
-const styles = {
-    card: {
-        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-        transition: '0.3s',
-        width: '40%',
-    },
-    container: {
-        padding: '2px 16px'
-    }
-};
