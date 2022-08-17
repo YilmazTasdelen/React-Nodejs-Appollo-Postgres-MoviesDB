@@ -13,9 +13,9 @@ const typeDefs = gql`
     createMovie(
                   title:String
                   description:String
-                  release_year:String
+                  release_year:Int
                   rating:String,
-                  language_id:String,
+                  language_id:Int,
                                       ): CreateMovieViewsResponse!
   }
 
