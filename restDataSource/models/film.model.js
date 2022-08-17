@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes, Model) => {
         // Model attributes are defined here
         film_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true
+            // allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
         },
         title: {
             type: DataTypes.STRING
@@ -25,8 +26,14 @@ module.exports = (sequelize, DataTypes, Model) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        language_id: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         actors: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER)
+            type: DataTypes.VIRTUAL,
+            // type: DataTypes.ARRAY(DataTypes.INTEGER),
+            // allowNull: true,
         }
     }, {
         // Other model options go here

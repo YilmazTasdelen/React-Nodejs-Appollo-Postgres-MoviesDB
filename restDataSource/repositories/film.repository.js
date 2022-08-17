@@ -54,6 +54,18 @@ class FilmRepository {
         console.log('films:::', FilmsToActors[0]);
         return FilmsToActors;
     }
+
+    async createMovie(movie) {
+        // todo : validate movie
+        console.log(movie);
+        return await this.db.films.create({
+            title: movie.title,
+            description: movie.description,
+            release_year: movie.release_year,
+            rating: movie.rating,
+            language_id: movie.language_id,
+        });
+    }
 }
 
 module.exports = new FilmRepository();

@@ -11,6 +11,10 @@ class FilmService {
     async getFilmsWithActors() {
         return await filmRepository.getFilmsWithActors();
     }
+
+    async createMovie(movie) {
+        return await filmRepository.createMovie(movie);
+    }
 }
 
 module.exports = new FilmService();

@@ -13,6 +13,7 @@ const connect = () => {
         host: 'localhost',
         dialect: 'postgres',
         operatorsAliases: 0,
+        omitNull: true,
         pool: {
             max: 10,
             min: 0,
