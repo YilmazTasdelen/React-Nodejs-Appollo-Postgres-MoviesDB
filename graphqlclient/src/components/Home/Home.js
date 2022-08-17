@@ -18,18 +18,18 @@ const MOVIES = gql`
 `;
 
 const Home = () => {
-    const { loading, error, data } = useQuery(MOVIES);
-    console.log(data);
-    return (
-        <>
-            test
-            {data?.movies?.map((movie, index) => (
-                <div key={movie.id} >
-                    {movie.title}
-                </div>
-            ))}
-        </>
-    )
+  const { loading, error, data } = useQuery(MOVIES);
+  console.log(data);
+  return (
+    <>
+      test
+      {data?.movies?.map((movie, index) => (
+        <div key={movie.id} >
+          {movie.title}
+        </div>
+      ))}
+    </>
+  )
 }
 
 export default Home
