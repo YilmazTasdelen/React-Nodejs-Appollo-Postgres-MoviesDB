@@ -9,6 +9,26 @@ const typeDefs = gql`
 
   }
  
+  type Mutation {
+    createMovie(
+                  title:String
+                  description:String
+                  release_year:String
+                  rating:String,
+                  language_id:String,
+                                      ): CreateMovieViewsResponse!
+  }
+
+  type CreateMovieViewsResponse {
+    "Similar to HTTP status code, represents the status of the mutation"
+    code: Int!
+    "Indicates whether the mutation was successful"
+    success: Boolean!
+    "Human-readable message for the UI"
+    message: String!
+    "Newly updated track after a successful mutation"
+    film: Film
+  }
 
   type Film{
     film_id:Int

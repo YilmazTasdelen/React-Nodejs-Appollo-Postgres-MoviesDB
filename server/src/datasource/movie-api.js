@@ -14,6 +14,10 @@ class MovieAPI extends RESTDataSource {
     getActor(actor_id) {
         return this.get(`actors/${actor_id}`);
     }
+
+    createMovie(title, description, release_year, rating, language_id) {
+        return this.post(`films`, { title: title, description: description, release_year: release_year, rating: rating, language_id: language_id });
+    }
 }
 
 module.exports = MovieAPI;

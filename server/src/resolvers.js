@@ -11,6 +11,27 @@ const resolvers = {
     },
 
   },
+  Mutation: {
+    // increments a track's numberOfViews property
+    createMovie: async (_, { title, description, release_year, rating, language_id }, { dataSources }) => {
+      try {
+        const newMovie = await dataSources.movieAPI.createMovie(title, description, release_year, rating, language_id);
+        return {
+          code: 200,
+          success: true,
+          message: `Successfully incremented number of views for track ${newMovie.film_id}`,
+          newMovie,
+        };
+      } catch (err) {
+        return {
+          code: err.extensions.response.status,
+          success: false,
+          message: err.extensions.response.body,
+          newMovie: null,
+        };
+      }
+    },
+  },
   Film: {
     actors: ({ film_id }, _, { dataSources }) => {
       console.log(film_id);
