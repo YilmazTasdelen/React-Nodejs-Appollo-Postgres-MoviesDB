@@ -19,8 +19,8 @@ const resolvers = {
         return {
           code: 200,
           success: true,
-          message: `Successfully incremented number of views for track ${newMovie.film_id}`,
-          newMovie,
+          message: `Successfully created ${newMovie.film_id}`,
+          film: newMovie,
         };
       } catch (err) {
         return {
